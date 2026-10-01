@@ -114,6 +114,34 @@ ul {
     color: var(--accent-light);
 }
 
+.logo img {
+    display: block;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 35%;
+    border: 2px solid #d4af37;
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.16),
+        0 0 0 4px rgba(212, 175, 55, 0.08);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.05);
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.2),
+        0 0 0 5px rgba(212, 175, 55, 0.12);
+}
+@media (max-width: 600px) {
+    .logo img {
+        width: 58px;
+        height: 58px;
+    }
+}
 
 /* Navigation */
 
@@ -2974,4 +3002,229 @@ body.light-mode .project-image {
 
 .cv-button {
     position: relative;
+}
+/* =========================================================
+   PHOTO PERSONNELLE — HERO PREMIUM
+   ========================================================= */
+
+.avatar {
+    position: absolute;
+    left: 50%;
+    top: 18px;
+    width: 250px;
+    height: 250px;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Halo lumineux */
+
+.avatar-glow {
+    position: absolute;
+    inset: -35px;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(232, 117, 24, 0.28) 0%,
+            rgba(212, 175, 55, 0.14) 38%,
+            transparent 70%
+        );
+    filter: blur(12px);
+    animation: avatarGlow 4s ease-in-out infinite;
+    z-index: -2;
+}
+
+/* Cercles décoratifs */
+
+.avatar-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.avatar-ring-one {
+    inset: -8px;
+    border: 2px solid rgba(212, 175, 55, 0.85);
+    box-shadow:
+        0 0 18px rgba(212, 175, 55, 0.25),
+        inset 0 0 18px rgba(212, 175, 55, 0.08);
+}
+
+.avatar-ring-two {
+    inset: -18px;
+    border: 1px solid rgba(232, 117, 24, 0.45);
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    animation: avatarRotate 12s linear infinite;
+}
+
+/* Photo */
+
+.avatar-photo {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid #ffffff;
+    background: #171717;
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.28),
+        0 0 0 2px rgba(212, 175, 55, 0.65),
+        0 0 35px rgba(232, 117, 24, 0.18);
+    isolation: isolate;
+}
+
+.avatar-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.16),
+            transparent 35%
+        );
+    pointer-events: none;
+    z-index: 2;
+}
+
+.avatar-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    transform: scale(1.08);
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+.avatar:hover .avatar-photo img {
+    transform: scale(1.13);
+    filter: brightness(1.04);
+}
+
+/* Badge Sakado Digital */
+
+.avatar-badge {
+    position: absolute;
+    right: -12px;
+    bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 78px;
+    padding: 8px 11px;
+    border: 1px solid rgba(212, 175, 55, 0.7);
+    border-radius: 12px;
+    background: rgba(20, 20, 20, 0.92);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.avatar-badge span {
+    color: #f0c35a;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.avatar-badge strong {
+    margin-top: 2px;
+    color: #ffffff;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+/* Animations */
+
+@keyframes avatarGlow {
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: scale(0.96);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes avatarRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .avatar {
+        top: 15px;
+        width: 205px;
+        height: 205px;
+    }
+
+    .avatar-photo {
+        width: 180px;
+        height: 180px;
+    }
+
+    .avatar-ring-one {
+        inset: -7px;
+    }
+
+    .avatar-ring-two {
+        inset: -14px;
+    }
+
+    .avatar-badge {
+        right: -10px;
+        bottom: 3px;
+        min-width: 70px;
+        padding: 7px 9px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .avatar {
+        top: 10px;
+        width: 175px;
+        height: 175px;
+    }
+
+    .avatar-photo {
+        width: 150px;
+        height: 150px;
+        border-width: 4px;
+    }
+
+    .avatar-badge {
+        right: -12px;
+        bottom: 0;
+        min-width: 65px;
+    }
+
+    .avatar-badge span {
+        font-size: 7px;
+    }
+
+    .avatar-badge strong {
+        font-size: 8px;
+    }
 }
